@@ -174,9 +174,15 @@ func (p *Pihole) GetOverTimeData10mins() (OverTimeData, error) {
 	return o, err
 }
 
-func (p *Pihole) GetTopItems() (TopItems, error) {
+func (p *Pihole) GetTopItems(items int64) (TopItems, error) {
+	var url string
+	if items <= 0 {
+		url = fmt.Sprintf("%s?topItems&auth=%p", p.Url, p.Pwhash)
+	} else {
+		url = fmt.Sprintf("%s?topItems=%d&auth=%p", p.Url, items, p.Pwhash)
+	}
 	t := TopItems{}
-	r, err := http.Get(p.Url + "?topItems&auth=" + p.Pwhash)
+	r, err := http.Get(url)
 	if err != nil {
 		return t, err
 	}
@@ -185,9 +191,15 @@ func (p *Pihole) GetTopItems() (TopItems, error) {
 	return t, err
 }
 
-func (p *Pihole) GetTopClients() (TopClients, error) {
+func (p *Pihole) GetTopClients(items int64) (TopClients, error) {
+	var url string
+	if items <= 0 {
+		url = fmt.Sprintf("%s?topClients&auth=%p", p.Url, p.Pwhash)
+	} else {
+		url = fmt.Sprintf("%s?topClients=%d&auth=%p", p.Url, items, p.Pwhash)
+	}
 	t := TopClients{}
-	r, err := http.Get(p.Url + "?topClients&auth=" + p.Pwhash)
+	r, err := http.Get(url)
 	if err != nil {
 		return t, err
 	}
