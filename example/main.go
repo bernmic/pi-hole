@@ -7,7 +7,7 @@ import (
 
 func main() {
 	config := Configuration()
-	p := pihole.Pihole{Url: config.Pihole.Url, Pwhash: config.Pihole.Pwhash}
+	p := pihole.New(config.Pihole.Url, config.Pihole.Pwhash)
 
 	t, err := p.GetType()
 	fmt.Printf("Type: %v, %v\n", t, err)

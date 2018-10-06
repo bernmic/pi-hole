@@ -104,6 +104,10 @@ type Query struct {
 	Answer    int
 }
 
+func New(url string, pwhash string) *Pihole {
+	return &Pihole{Url: url, Pwhash: pwhash}
+}
+
 func (p *Pihole) GetType() (Type, error) {
 	t := Type{}
 	r, err := http.Get(p.Url + "?type")
