@@ -20,5 +20,5 @@ func main() {
 }
 ```
 
-Url is the complete Api-Url (eg. http://localhost/admin/admin.php). The hashed password can be found in /etc/pihole/setupVars.conf unter WEBPASSWORD.
+Url is the complete Api-Url (eg. http://localhost/admin/admin.php). The hashed password can be found in /etc/pihole/setupVars.conf under WEBPASSWORD.
  
